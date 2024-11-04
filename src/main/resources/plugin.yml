@@ -1,0 +1,4 @@
+name: MessageAPI
+version: '1.0'
+main: com.indawgnito.messageapi.MessageAPI
+api-version: '1.21'
