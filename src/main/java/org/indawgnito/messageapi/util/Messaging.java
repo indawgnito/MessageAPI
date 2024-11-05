@@ -29,6 +29,6 @@ public class Messaging {
     }
 
     private static String bracket(String toSurround) {
-        return Colors.BRACKET + "[" + toSurround + Colors.BRACKET + "]" + Colors.DEFAULT;
+        return Colors.BRACKET + "[" + toSurround + Colors.BRACKET + "] " + Colors.DEFAULT;
     }
 }
