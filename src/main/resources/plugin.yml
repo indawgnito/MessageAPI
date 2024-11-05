@@ -2,4 +2,4 @@ name: MessageAPI
 version: '1.0'
 main: org.indawgnito.messageapi.MessageAPI
 api-version: '1.21'
-description: Messaging API for MooDeng plugins providing consistent message formatting
+description: Messaging API plugins providing consistent message formatting

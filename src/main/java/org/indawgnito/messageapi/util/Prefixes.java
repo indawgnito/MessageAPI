@@ -18,6 +18,8 @@ public class Prefixes {
     public static final String LEAVE = format("-", "#ffffff");
     public static final String STAR = format("✦", "#ffffff");
 
+    public static final String SPECIAL_STAR = format("\uD83C\uDF1F", "#ffffff");
+
     private static String format(String symbol, String hexColor) {
         return ChatColor.of(hexColor) + symbol;
     }
