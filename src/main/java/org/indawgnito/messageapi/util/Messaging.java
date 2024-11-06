@@ -18,14 +18,15 @@ public class Messaging {
         recipient.sendMessage(bracket(Prefixes.FAILURE) + Colors.DEFAULT + message);
     }
 
-    public static void broadcast(String message) {
-        String formattedMessage = Colors.DEFAULT + message;
+    public static void broadcast(String message, boolean discreet) {
+        String formattedMessage = message;
+
         // Parse color codes in the message
         formattedMessage = ChatColor.translateAlternateColorCodes('&', formattedMessage);
         formattedMessage = ChatColor.translateAlternateColorCodes('§', formattedMessage);
 
         // Send the broadcast with proper formatting
-        Bukkit.broadcastMessage(bracket(Prefixes.BROADCAST) + formattedMessage);
+        Bukkit.broadcastMessage(bracket(discreet ? Prefixes.INFO : Prefixes.BROADCAST) + formattedMessage);
     }
 
     private static String bracket(String toSurround) {
