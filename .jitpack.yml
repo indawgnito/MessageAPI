@@ -4,3 +4,4 @@ jdk:
 install:
   - sdk install maven 3.8.6
   - sdk use maven 3.8.6
+  - mvn clean install -DskipTests
