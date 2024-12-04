@@ -1,14 +1,24 @@
 package org.indawgnito.messageapi.util;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 public class Messaging {
+    private static final LegacyComponentSerializer SERIALIZER = LegacyComponentSerializer.builder()
+            .character('&')  // Use & as the color code character
+            .hexColors()     // Support hex colors like &#FFFFFF
+            .build();
 
     // Send method for String-based messages
     public static void send(CommandSender recipient, Component prefix, String message) {
-        Component fullMessage = bracket(prefix).append(Component.text(message).color(Colors.DEFAULT));
+        // Apply default color if no color codes are at the start of the message
+        if (!message.startsWith("&")) {
+            message = "&#" + Colors.DEFAULT.asHexString().substring(1) + message;
+        }
+        Component messageComponent = SERIALIZER.deserialize(message);
+        Component fullMessage = bracket(prefix).append(messageComponent);
         recipient.sendMessage(fullMessage);
     }
 
@@ -40,8 +50,12 @@ public class Messaging {
 
     public static void broadcast(String message, boolean discreet) {
         Component prefix = discreet ? Prefixes.INFO : Prefixes.BROADCAST;
-        Component formattedMessage = Component.text(message);
-        Component fullMessage = bracket(prefix).append(formattedMessage);
+        // Apply default color if no color codes are at the start of the message
+        if (!message.startsWith("&")) {
+            message = "&#" + Colors.DEFAULT.asHexString().substring(1) + message;
+        }
+        Component messageComponent = SERIALIZER.deserialize(message);
+        Component fullMessage = bracket(prefix).append(messageComponent);
 
         Bukkit.broadcast(fullMessage);
     }
