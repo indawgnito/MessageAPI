@@ -1,10 +1,8 @@
 package org.indawgnito.messageapi.util;
 
-import net.md_5.bungee.api.ChatColor;
+import net.kyori.adventure.text.format.TextColor;
 
 public class Colors {
-    public static final String BRACKET = ChatColor.of("#666666").toString();
-    public static final String DEFAULT = ChatColor.of("#AAAAAA").toString();
-    public static final String WHITE = ChatColor.of("#FFFFFF").toString();
-    public static final String AQUA = ChatColor.of("#55FFFF").toString();
+    public static final TextColor BRACKET = TextColor.fromHexString("#666666");
+    public static final TextColor DEFAULT = TextColor.fromHexString("#AAAAAA");
 }

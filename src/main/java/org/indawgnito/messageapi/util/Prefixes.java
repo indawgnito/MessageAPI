@@ -1,27 +1,28 @@
 package org.indawgnito.messageapi.util;
 
-import net.md_5.bungee.api.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 
 public class Prefixes {
-    public static final String MSG = format("✉", "#ffffff");
-    public static final String TELEPORT = format("⚡", "#ffffff");
-    public static final String ECONOMY = format("\uD83D\uDCB2", "#ffffff");
-    public static final String BROADCAST = format("Broadcast", "#ffffff");
-    public static final String DEATH = format("☠", "#ffffff");
-    public static final String KILL = format("\uD83D\uDDE1", "#ffffff");
-    public static final String INFO = format("ℹ", "#ffffff");
-    public static final String FAILURE = format("❌", "#ffffff");
-    public static final String SUCCESS = format("✔", "#ffffff");
-    public static final String BULLSEYE = format("◎", "#ffffff");
-    public static final String BUDDY = format("\uD83D\uDC65", "#ffffff");
-    public static final String JOIN = format("+", "#ffffff");
-    public static final String LEAVE = format("-", "#ffffff");
-    public static final String STAR = format("✦", "#ffffff");
-    public static final String BOOK = format("\uD83D\uDCD5", "#ffffff");
+    public static final Component MSG = format("✉", "#ffffff");
+    public static final Component TELEPORT = format("⚡", "#ffffff");
+    public static final Component ECONOMY = format("\uD83D\uDCB2", "#ffffff");
+    public static final Component BROADCAST = format("Broadcast", "#ffffff");
+    public static final Component DEATH = format("☠", "#ffffff");
+    public static final Component KILL = format("\uD83D\uDDE1", "#ffffff");
+    public static final Component INFO = format("ℹ", "#ffffff");
+    public static final Component FAILURE = format("❌", "#ffffff");
+    public static final Component SUCCESS = format("✔", "#ffffff");
+    public static final Component BULLSEYE = format("◎", "#ffffff");
+    public static final Component BUDDY = format("\uD83D\uDC65", "#ffffff");
+    public static final Component JOIN = format("+", "#ffffff");
+    public static final Component LEAVE = format("-", "#ffffff");
+    public static final Component STAR = format("✦", "#ffffff");
+    public static final Component BOOK = format("\uD83D\uDCD5", "#ffffff");
 
-    public static final String SPECIAL_STAR = format("\uD83C\uDF1F", "#ffffff");
+    public static final Component SPECIAL_STAR = format("\uD83C\uDF1F", "#ffffff");
 
-    private static String format(String symbol, String hexColor) {
-        return ChatColor.of(hexColor) + symbol;
+    private static Component format(String symbol, String hexColor) {
+        return Component.text(symbol).color(TextColor.fromHexString(hexColor));
     }
 }

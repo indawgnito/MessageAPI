@@ -1,35 +1,36 @@
 package org.indawgnito.messageapi.util;
 
-import net.md_5.bungee.api.ChatColor;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class Messaging {
-    public static void send(CommandSender recipient, String prefix, String message) {
-        recipient.sendMessage(bracket(prefix) + Colors.DEFAULT + message);
+
+    public static void send(CommandSender recipient, Component prefix, String message) {
+        Component fullMessage = bracket(prefix).append(Component.text(message).color(Colors.DEFAULT));
+        recipient.sendMessage(fullMessage);
     }
 
     public static void success(CommandSender recipient, String message) {
-        recipient.sendMessage(bracket(Prefixes.SUCCESS) + Colors.DEFAULT + message);
+        send(recipient, Prefixes.SUCCESS, message);
     }
 
     public static void failure(CommandSender recipient, String message) {
-        recipient.sendMessage(bracket(Prefixes.FAILURE) + Colors.DEFAULT + message);
+        send(recipient, Prefixes.FAILURE, message);
     }
 
     public static void broadcast(String message, boolean discreet) {
-        String formattedMessage = message;
+        Component prefix = discreet ? Prefixes.INFO : Prefixes.BROADCAST;
+        Component formattedMessage = Component.text(message);
+        Component fullMessage = bracket(prefix).append(formattedMessage);
 
-        // Parse color codes in the message
-        formattedMessage = ChatColor.translateAlternateColorCodes('&', formattedMessage);
-        formattedMessage = ChatColor.translateAlternateColorCodes('§', formattedMessage);
-
-        // Send the broadcast with proper formatting
-        Bukkit.broadcastMessage(bracket(discreet ? Prefixes.INFO : Prefixes.BROADCAST) + formattedMessage);
+        Bukkit.broadcast(fullMessage);
     }
 
-    private static String bracket(String toSurround) {
-        return Colors.BRACKET + "[" + toSurround + Colors.BRACKET + "] " + Colors.DEFAULT;
+    private static Component bracket(Component toSurround) {
+        return Component.text("[", Colors.BRACKET)
+                .append(toSurround)
+                .append(Component.text("] ", Colors.BRACKET))
+                .color(Colors.DEFAULT);
     }
 }
