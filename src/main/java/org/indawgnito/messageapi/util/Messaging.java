@@ -38,7 +38,6 @@ public class Messaging {
         send(recipient, Prefixes.FAILURE, message);
     }
 
-    // Broadcast method remains unchanged, assuming Components are not required here
     public static void broadcast(String message, boolean discreet) {
         Component prefix = discreet ? Prefixes.INFO : Prefixes.BROADCAST;
         Component formattedMessage = Component.text(message);
@@ -50,7 +49,6 @@ public class Messaging {
     private static Component bracket(Component toSurround) {
         return Component.text("[", Colors.BRACKET)
                 .append(toSurround)
-                .append(Component.text("] ", Colors.BRACKET))
-                .color(Colors.DEFAULT);
+                .append(Component.text("] ", Colors.BRACKET));
     }
 }
