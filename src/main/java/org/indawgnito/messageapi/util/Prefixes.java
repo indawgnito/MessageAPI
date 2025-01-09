@@ -19,7 +19,7 @@ public class Prefixes {
     public static final Component LEAVE = format("-", "#ffffff");
     public static final Component STAR = format("✦", "#ffffff");
     public static final Component BOOK = format("\uD83D\uDCD5", "#ffffff");
-    public static final Component AURA = format("🌀", "#00e0ff");
+    public static final Component AURA = format("⚝", "#00e0ff");
 
     public static final Component SPECIAL_STAR = format("\uD83C\uDF1F", "#ffffff");
 
