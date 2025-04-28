@@ -28,6 +28,12 @@ public class Messaging {
         recipient.sendMessage(fullMessage);
     }
 
+    // NEW method for sending PRE-STYLED Components (preserves existing color)
+    public static void sendStyled(CommandSender recipient, Component prefix, Component alreadyStyledMessage) {
+        Component fullMessage = bracket(prefix).append(alreadyStyledMessage); // No .color() call
+        recipient.sendMessage(fullMessage);
+    }
+
     // Success method for String-based messages
     public static void success(CommandSender recipient, String message) {
         send(recipient, Prefixes.SUCCESS, message);
